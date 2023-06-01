@@ -8,6 +8,7 @@ import { ThemeSupa } from '@supabase/auth-ui-shared';
 import useAuthModal from '@/hooks/useAuthModal';
 
 import Modal from './Modal';
+import { useEffect } from 'react';
 
 const AuthModal = () => {
   const supabaseClient = useSupabaseClient();
@@ -21,6 +22,13 @@ const AuthModal = () => {
     }
   };
 
+  useEffect(() => {
+    if (session) {
+      router.refresh();
+      onClose();
+    }
+  }, [onClose, router, session])
+  
   return (
     <Modal
       title="Welcome to Spotify Clone"
