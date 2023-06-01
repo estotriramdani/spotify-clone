@@ -29,6 +29,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         )}
         disabled={props.disabled}
         ref={ref}
+        {...props}
       >
         {children}
       </button>
