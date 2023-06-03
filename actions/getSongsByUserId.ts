@@ -11,6 +11,7 @@ const getSongsByUserId = async (): Promise<Song[]> => {
 
   if (sessionError) {
     console.log(sessionError);
+    return []
   }
 
   const { data, error } = await supabase
