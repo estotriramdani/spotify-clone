@@ -11,7 +11,7 @@ export interface UserDetails {
 }
 
 export interface Song {
-  id: string;
+  id: number;
   user_id: string;
   author: string;
   title: string;

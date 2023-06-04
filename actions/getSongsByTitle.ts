@@ -1,6 +1,7 @@
 import { Song } from '@/types';
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
 import { cookies } from 'next/headers';
+import deezerInserter from './deezerInserter';
 
 const getSongsByTitle = async (title?: string): Promise<Song[]> => {
   const supabase = createServerComponentClient({
@@ -11,6 +12,8 @@ const getSongsByTitle = async (title?: string): Promise<Song[]> => {
     return [];
   }
 
+  const fromDeezer = await deezerInserter(title);
+
   const { data, error } = await supabase
     .from('songs')
     .select('*')
@@ -19,10 +22,10 @@ const getSongsByTitle = async (title?: string): Promise<Song[]> => {
 
   if (error) {
     console.log(error);
-    return []
+    return [];
   }
 
-  return (data as any) || [];
+  return [...(data as any), ...(fromDeezer || [])] || [...(fromDeezer || [])];
 };
 
 export default getSongsByTitle;

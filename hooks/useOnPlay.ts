@@ -9,7 +9,7 @@ const useOnPlay = (songs: Song[]) => {
   const authModal = useAuthModal();
   const { user } = useUser();
 
-  const onPlay = (id: string) => {
+  const onPlay = (id: number) => {
     if (!user) {
       return authModal.onOpen();
     }

@@ -6,7 +6,7 @@ import Image from 'next/image';
 
 interface MediaItemProps {
   song: Song;
-  onClick?: (id: string) => void;
+  onClick?: (id: number) => void;
 }
 
 const MediaItem: React.FC<MediaItemProps> = ({ onClick, song }) => {
@@ -45,15 +45,18 @@ const MediaItem: React.FC<MediaItemProps> = ({ onClick, song }) => {
 
       "
       >
-        <Image
-          fill
-          src={imageUrl || '/images/liked.png'}
-          className="object-cover"
-          alt="Media Item"
-        />
+        
+          <Image
+            fill
+            src={imageUrl || '/images/liked.png'}
+            className="object-cover"
+            alt="Media Item"
+          />
       </div>
       <div className="flex flex-col gap-y-1 overflow-hidden">
-        <p className="text-white truncate">{song.title.length > 15 ? `${song.title.substring(0, 15)}...`:song.title }</p>
+        <p className="text-white truncate">
+          {song.title.length > 15 ? `${song.title.substring(0, 15)}...` : song.title}
+        </p>
         <p className="text-neutral-400 text-sm truncate">{song.author}</p>
       </div>
     </div>

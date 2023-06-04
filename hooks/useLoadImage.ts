@@ -9,6 +9,10 @@ const useLoadImage = (song: Song) => {
     return null;
   }
 
+  if (song.image_path.startsWith('https://e-cdns') || song.image_path.endsWith('jpg')) {
+    return song.image_path;
+  }
+
   const { data } = supabaseClient.storage.from('images').getPublicUrl(song.image_path);
 
   return data.publicUrl;

@@ -4,7 +4,7 @@ import { toast } from 'react-hot-toast';
 
 import { Song } from '@/types';
 
-const useGetSongById = (id?: string) => {
+const useGetSongById = (id?: number) => {
   const [isLoading, setIsLoading] = useState(false);
   const [song, setSong] = useState<Song>();
   const { supabaseClient } = useSessionContext();
