@@ -83,7 +83,7 @@ const PlayerContent: React.FC<PlayerContentProps> = ({ song, songUrl }) => {
     } else {
       pause();
     }
-  };
+};
 
   const toggleMute = () => {
     if (volume === 0) {
@@ -102,12 +102,12 @@ const PlayerContent: React.FC<PlayerContentProps> = ({ song, songUrl }) => {
       </div>
 
       <div className="flex md:hidden col-auto w-full justify-end items-center">
-        <div
-          onClick={() => {}}
+        <button
+          onClick={handlePlay}
           className="h-10 w-10 flex items-center rounded-full bg-white p-1 cursor-pointer "
         >
           <Icon size={30} className="text-black" />
-        </div>
+        </button>
       </div>
 
       <div
