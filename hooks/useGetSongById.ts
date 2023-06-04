@@ -18,7 +18,7 @@ const useGetSongById = (id?: number) => {
 
     const fetchSong = async () => {
       const { data, error } = await supabaseClient.from('songs').select('*').eq('id', id).single();
-
+      // save listen data to get most listened songs
       if (error) {
         console.error(error);
         return toast.error(error.message);
