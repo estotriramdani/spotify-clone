@@ -53,7 +53,7 @@ const MediaItem: React.FC<MediaItemProps> = ({ onClick, song }) => {
         />
       </div>
       <div className="flex flex-col gap-y-1 overflow-hidden">
-        <p className="text-white truncate">{song.title}</p>
+        <p className="text-white truncate">{song.title.length > 15 ? `${song.title.substring(0, 15)}...`:song.title }</p>
         <p className="text-neutral-400 text-sm truncate">{song.author}</p>
       </div>
     </div>
